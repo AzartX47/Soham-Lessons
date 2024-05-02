@@ -1,0 +1,150 @@
+'''number = 7
+my_string = f"Number is {number}"
+print(my_string)'''
+'''name = "soham"
+age = 12
+def name_and_age_func(name, age):
+  return name, age
+
+ret = name_and_age_func(name, age)
+print(f"Two times {ret[0].capitalize()}'s age is {ret[1]} years old!")'''
+'''
+### Hangman Game
+
+**Objective:** Create a simple Hangman game where the player tries to guess a word within a limited number of attempts.
+
+**Tools:** None
+
+**The Task:**
+- Make a Hangman game where the player guesses letters to uncover a hidden word.
+- Display the current state of the word with underscores representing unrevealed letters.
+- Allow the player to guess letters until they either correctly guess the word or run out of attempts.
+- Provide feedback on correct and incorrect guesses, and display the number of attempts remaining.
+
+**Instructions:**
+1. Define the function `hangman()` to start the Hangman game.
+2. Pass the `word` as a parameter to the function. Also pass the `max_attempts` parameter for total attempts.
+3. Inside the function, initialize an empty list named `guessed_letters` to track guessed letters.
+4. Initialize a variable `attempts` to count the number of incorrect guesses, starting at `0`.
+5. Print a welcome message and instructions to the player at the beginning of the game, as well as the length of the word and the number of attempts they have. Use f-strings
+6. Start a `while True` loop to continue the game until the player wins or runs out of attempts, at `break`.
+7. Display the current state of the word with underscores for unrevealed letters and the guessed letters revealed, ex: `g a _ _` - `g a m e`. Pay attention to formatting!!!
+8. Prompt the player to enter a letter guess using the `input()` function.
+9. Check if the letter has already been guessed by checking if it's in the `guessed_letters` list. If the letter has been guessed, print that to the player and continue to the next iteration of the loop with `continue`.
+10. If the letter is not in the word, increase the `attempts` counter by 1 and tell the player about the incorrect guess (with a message along with the letter).
+11. If the attempts reach the maximum allowed, end the game and reveal the word to the player.
+12. If the guessed letter is in the word, tell the player about the correct guess (by printing the letter guessed as well as a message) and continue the game loop.
+13. After the game loop ends, print whether the player won or lost the game. If the game is lost, print the final word.
+
+**Note: Remember that this is run inside a loop, so the code will repeat from displaying the word all the way to checking the letters! Always ensure every loop can be broken out of!
+'''
+#Let's start coding let's goooooo!!
+
+#Try to implement a hangman visual representation of the game!
+#Implment the commented out print statement to show the amount of letters left to guess!
+#Good luck and have fun, you got this!!
+
+from word import word
+
+def hangman(word, max_attempts=6):
+  guessed_letters = []
+  attempts = 0
+
+  hangman_states = [
+      '''
+         ------
+         |    |
+         |
+         |
+         |
+         |
+      --------
+      ''',
+      '''
+         ------
+         |    |
+         |    O
+         |
+         |
+         |
+      --------
+      ''',
+      '''
+         ------
+         |    |
+         |    O
+         |    |
+         |
+         |
+      --------
+      ''',
+      '''
+         ------
+         |    |
+         |    O
+         |   /|
+         |
+         |
+      --------
+      ''',
+      '''
+         ------
+         |    |
+         |    O
+         |   /|\\
+         |
+         |
+      --------
+      ''',
+      '''
+         ------
+         |    |
+         |    O
+         |   /|\\
+         |   /
+         |
+      --------
+      ''',
+      '''
+         ------
+         |    |
+         |    O
+         |   /|\\
+         |   / \\
+         |
+      --------
+      '''
+  ]
+  
+  print(
+      f"Welcome to Hangman, try to guess the word!\nYou have {max_attempts} guesses.\nThe word is {len(word)} letters long.\n"
+  )
+  while True:
+    display_word = ''
+    for letter in word:
+      if letter in guessed_letters:
+        display_word += f"{letter} "
+      else:
+        display_word += '_ '
+    print(f"Word: {display_word}")
+    print(hangman_states[attempts])
+
+    if '_' not in display_word:
+      print("Congratulations! You've guessed the word!")
+      break
+
+    guess = input("Choose a letter: ")
+    if guess in guessed_letters:
+      print(f"You have already guessed the letter {guess}!\n")
+      continue
+
+    guessed_letters.append(guess)
+    if guess not in word:
+      attempts += 1
+      if attempts > max_attempts:
+        print(f"\nGame Over. You are out of attempts!\nThe word was {word}\n")
+        break
+      print(f"The guess '{guess}' is not in the word. You have {max_attempts-attempts} attempts remaining!\n")
+    else:
+      print("Correct guess!\n")
+hangman(word)
