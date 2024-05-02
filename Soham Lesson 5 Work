@@ -1,0 +1,131 @@
+'''
+### Tic Tac Toe Game
+
+**Objective:** Create a simple Tic Tac Toe game where two players take turns placing their marks (X or O) on a 3x3 grid, attempting to form a horizontal, vertical, or diagonal line and win.
+
+**Tools:** None (Yayyyy!! Simpler code to make this work)
+
+**The Task:**
+- Create a Tic Tac Toe game where players take turns placing their marks on the board until one player wins or the game ends in a draw.
+- Use functions to handle various aspects of the game, including printing the board, checking for a win, checking for a draw, and executing the main game loop.
+- Make sure to display the current state of the board and print the winner or a draw.
+
+**Instructions:**
+
+0. Initialize an empty 3x3 board as a nested list, with each cell initially marked as empty (" ").
+
+1. Define the function `print_board(board)` to display the current state of the Tic Tac Toe board.
+   - Iterate through each row of the board and print it with proper formatting, using a loop and the `join()` method to separate elements with "|". (Hint: `f"| {' | '.join(row)} |"`)
+   - Print horizontal lines ("-------------") to separate rows and columns for a clear visual representation of the board.
+
+2. Define the function `check_win(board, player)` to check if the specified player has won the game.
+   1. **Check Rows:**
+      - Iterate through each row of the board.
+      - Use the `` method to count the number of marks (X or O) belonging to the player in each row.
+      - If any row contains three consecutive marks belonging to the player, return `True` to indicate a win.
+
+   2. **Check Columns:**
+      - Iterate through column indices (0 to 2, total of 3 with `range()`) for each column of the board.
+      - Compare marks at corresponding positions in each column to see if they belong to the player (comparing each three to the current player).
+      - If any column contains three consecutive marks belonging to the player, return `True` to indicate a win.
+
+   3. **Check Diagonals:**
+      - Check the diagonal from the top-left corner to the bottom-right corner.
+      - Compare marks at positions (0, 0), (1, 1), and (2, 2) to see if they belong to the player.
+      - Check the diagonal from the top-right corner to the bottom-left corner.
+      - Compare marks at positions (0, 2), (1, 1), and (2, 0) to see if they belong to the player.
+      - If either diagonal contains three consecutive marks belonging to the player, return `True` to indicate a win.
+
+   4. **Return Result:**
+      - If none of the above conditions are met, return `False` to indicate that the current player has not won the game yet, so the game continues.
+
+3. Define the function `` to determine if the game has ended in a draw.
+   - Iterate through each cell of the board and check if any cell is still empty (marked with " ").
+   - If no empty cells are found, return `True` to indicate a draw; otherwise, return `False`.
+
+4. Define the main function `tic_tac_toe()` to execute the Tic Tac Toe game.
+   - Start the game loop to alternate turns between players, with variable `player` starting as "X".
+   - Display the current state of the board at the beginning of each turn using the `print_board()` function.
+   - Prompt the current player to enter a row and column to place their mark, separated by a space.
+   - Check if the chosen cell is already occupied; if so, display an error message and prompt the player to choose again.
+   - Place the player's mark in the chosen cell and check for a win or draw using the `check_win()` and `check_draw()` functions (WITH THE FIRST BEING BEFORE THE SECOND). 
+   - If a win or draw is detected, display the final state of the board and announce the result.
+   - If the game continues, switch to the next player's turn and repeat the process until the game ends.
+'''
+'''l = ['1', '2', '3', '4', '5']
+print(' - '.join(l))'''
+'''l =  [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+for li in l:
+  print(li)
+'''
+#That good code goes here!!!
+#God bless
+
+board = [[" ","1","2","3"],["1"," ", " ", " "], ["2"," ", " ", " "], ["3"," ", " ", " "]]
+
+
+def print_board(board):
+  print("-----------------")
+  for row in board:
+    print(f"| {' | '.join(row)} |")
+    print("------------------")
+
+
+def check_win(board, player):
+  # Check rows
+  for row in board:
+    if row.count(player) == 3:
+      return True
+  # Check columns
+  for col in range(3):
+    if board[1][col] == board[2][col] == board[3][col] == player:
+      return True
+  # Check diagonals
+  if board[1][1] == board[2][2] == board[3][3] == player:
+    return True
+  elif board[1][3] == board[2][2] == board[3][1] == player:
+    return True
+
+  return False
+
+
+def check_draw(board):
+  for row in board:
+    if " " in row:
+      return False
+  return True
+
+
+def tic_tac_toe():
+  #yayyyyyyyyy
+  player = "X"
+  print(f"Welcome to Tic Tac Toe! Player {player} starts first!\nFirst number is y-axis, and second number is x-axis!")
+
+  while True:
+    print_board(board)
+    choice = input("\nEnter a row and column, seperated by a space: ").strip()
+    '''
+    row = int(choice.split(" ")[0])
+    row = int(choice.split(" ")[1])
+    '''
+    row, col = map(int, choice.split(" "))
+    if board[row][col] != " ":
+      print("That cell is already taken. Try again.")
+      continue
+    board[row][col] = player
+
+    if check_win(board, player):
+      print_board(board)
+      print(f"Player '{player}' wins!")
+      break
+
+    if check_draw(board):
+      print_board(board)
+      print("It's a draw!")
+      break
+
+    player = "O" if player == "X" else "X"
+
+tic_tac_toe()
+
+#Homework: 1. Write the numbers around the board. 2. Make this work for n-th amount of players.
