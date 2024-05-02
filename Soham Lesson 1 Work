@@ -1,0 +1,88 @@
+'''my_list=[1,2,3,4,"hello"]
+my_list.append(6)
+print(my_list)
+my_list.pop(0)
+print(my_list)
+my_list.remove("hello")
+print(my_list)
+#error
+my_list.insert(100, 7)
+print(my_list[100])'''
+
+'''#my_dict = {key: value}
+my_dict = {"name": "soham"}
+my_dict["age"] = 12
+my_dict['number'] = 100
+del my_dict['number']
+
+for key, value in my_dict.items():
+  print(key + " " + value)'''
+
+'''something = True
+something=False
+
+if something:
+    print(True)
+if something:
+    print(False)
+'''
+'''my_string = 'abcdef'
+my_list = list(my_string)
+for letter in my_list:
+    print(letter)
+print()
+for letter in reversed(my_list):
+    print(letter)'''
+
+'''var=12
+he = 10
+def my_funct(v, he):
+  print (v)
+my_funct(var, he)'''
+
+'''
+def my_func():
+  var = 10
+  return var
+
+ret = my_func()
+print(ret)'''
+
+#_______________________________________________________
+'''
+Exercise 1: Check for Duplicates in a List
+
+Instructions:
+
+1. Write a Python function named `check_for_duplicates` that takes two parameters: a list of elements and a target element (string or integer).
+
+2. Inside the function:
+   - Create an empty list to store each element in the list.
+   - Iterate through the list and for each element:
+       - Check if the element already exists in the list.
+           - If it does, return `True`.
+           - If not, add it to the list.
+   - After iterating through the list, if no duplicates are found, return `False`.
+
+3. Test the function by calling it with different lists and target elements.
+'''
+#code
+def check_for_duplicates(elements_list,target):
+  empty=[]
+  for element in elements_list:
+    if element==target:
+      empty.append(element)
+  length=len(empty)
+  if length>1:
+    return True
+  else:
+    return False
+
+elements_list = [1, 2, 3, 4, '1', '1']
+target = "1"
+print(check_for_duplicates(elements_list,target))
+
+my_integer = 1
+
+my_integer = my_integer +1
+my_integer += 1
