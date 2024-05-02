@@ -1,0 +1,135 @@
+'''try:
+  number = int(input("Enter a number: "))
+  print(f"you have enterred {number}")
+except ValueError:
+    print("That's not a number!")
+except Exception as e:
+    print(f"Some other exception: {e}")'''
+
+'''try:
+  first=int(input("enter a number: "))
+  second=int(input("enter another number: "))
+  result= first/second
+  print(f"the first number divided by the second is {result}!")
+except ValueError:
+  print("That's not a number!")
+except Exception as e:
+  print(f"Some other exception: {e}")'''
+
+'''
+#import file1 as add
+#import file1
+from file1 import *
+print(add(1, 5))'''
+
+'''from utilities import *
+print(check_type(()))'''
+
+'''var = 0
+if var >0:
+  print("YES")
+
+grade = 100
+status= "A+ student" if grade == 100 else "You got work to do brother"
+print(status)
+
+squares = [x**10 for x in range(10)]
+print(squares)'''
+
+# Formula: F = (C * 9/5) + 32
+
+'''celsius_temperatures = [0, 10, 20, 30, 40]
+
+fahrenheit_temperatures = [round((C * 9/5) + 32) for C in celsius_temperatures]
+print(fahrenheit_temperatures)'''
+
+'''
+### Math Challenge Game
+
+**Objective:** Implement a math challenge game where players answer randomly selected math questions.
+
+**Tools:** Python's `random` module, questions `.py` file
+
+**The Task:**
+- Create a simple game that presents users with random math questions.
+- Allow users to input their answers and provide feedback on correctness.
+- Ensure the game handles invalid inputs gracefully using try-except blocks.
+- Utilize a separate file to store the questions and answers, and import it into the main game script.
+
+**Instructions:**
+1. **Set Up the Questions Data:**
+   - Create a new file named `questions_data.py`.
+   - Inside `questions_data.py`, define a list named `questions`, where each element is a tuple containing a math question as a string and its corresponding answer as an integer.
+
+2. **Write the Main Game Script:**
+   - Import the necessary modules: `random` for generating random questions and `questions_data` to access the questions.
+   - Define a function named `ask_question(questions)` to ask a random question from the `questions` list.
+   - Inside the function:
+     - Use `random.choice()` to select a random question-answer tuple from the `questions` list.
+     - Use a `while` loop to repeatedly ask the user for input until a valid integer is entered.
+     - Use a try-except block to catch ValueError if the input is not a valid integer.
+     - Compare the user's input to the correct answer and provide appropriate feedback.
+     - Break out of the loop when a correct integer is entered.
+
+3. **Implement the Game Flow:**
+   - In the main part of `math_challenge.py`, print a welcome message to the user.
+   - Call the `ask_question(questions)` function to start the game.
+   - Run the script to play the game
+'''
+equation="4 + 6"
+
+
+# Given an equation like "4 + 6" calculate and
+# return the result
+def calcuate(equation):
+  answer=0
+  parts=equation.split(" ")
+  #assume parts is an array with length 3
+  first=int(parts[0])
+  second=int(parts[2])
+  oper=parts[1]
+  if oper=="+":
+    answer += first+second
+    
+  else :
+    answer += first-second
+  return answer
+
+
+
+import random as ran
+from questions_data import questions
+
+def ask_question(questions):
+  question= ran.choice(questions)
+  while True:
+    try:
+      user_answer = int(input(f"{question} = "))
+      answer=calcuate(equation)
+      print (answer)
+      if user_answer==answer:
+        print("correct")
+        break
+      else:
+        print("incorrect")
+    except Exception as e:
+      print(f"We have an error: {e}")
+
+ask_question(questions)
+answer=None
+
+'''
+utilities.py file:
+def check_type(var):
+  type_var=type(var)
+  return type_var
+
+questions_data.py file:
+#Create a list of expressions, which then use a function to calulate the result, adding the expression and the final answer into a tuple, like so: [(expression, answer), (expression, answer)]
+
+questions = [
+    ("5 + 3", ),
+    ("10 - 7", ),
+    ("4 + 6", )
+]
+'''
