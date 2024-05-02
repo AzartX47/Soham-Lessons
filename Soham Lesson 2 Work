@@ -1,0 +1,150 @@
+'''from num2words import num2words
+
+def count_number_occurrences(number_list):
+    occurrences = {}
+    for num in number_list:
+        num_str = str(num)
+        if num_str in occurrences:
+            occurrences[num_str] += 1
+        else:
+            occurrences[num_str] = 1
+    return occurrences
+
+numbers = [1, 2, 3, 4, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]
+output = count_number_occurrences(numbers)
+
+for p1, p2 in output.items():
+    print("There are: "+num2words(p2).capitalize()+" "+p1+"'s")'''
+
+'''import random
+
+r = random.randint(1, 10000000)
+print(r)
+
+from random import randint
+
+r = randint(1, 109)
+print(r)'''
+
+'''
+### Dice Roll Exercise
+
+**Objective:** Create a simple dice roll simulation that uses the `random` library to generate a random number between 1 and 6, simulating the roll of a six-sided dice.
+
+**Tools:** `random` library
+
+**The Task:**
+- Write a function called `roll_dice()` that simulates rolling a six-sided dice.
+- Use the `random.randint()` function to generate a random number between 1 and 6.
+- Print the result of each dice roll.
+- After rolling the dice, the program should ask the user if they want to roll again. The program should continue to roll the dice until the user decides to stop.
+
+**Instructions:**
+1. Import the `random` library at the beginning of your script.
+2. Define a function named `roll_dice()`. This function does not need any parameters.
+3. Inside the function, use `random.randint(1, 6)` to simulate the dice roll.
+4. Print the result of the dice roll.
+5. Ask if we want to roll the dice again. If the answer is 'yes', call the function again; if the answer is 'no', end the program.
+6. Outside of the function, call `roll_dice()` to start the program.
+'''
+'''while num == 1
+while True'''
+
+'''from random import randint
+def roll_dice():
+
+  while True:
+    num=randint(1, 6)
+    choice = input("y/n")
+
+    if choice =='y':
+        print(num)
+    else:
+      break
+roll_dice()
+print('goodbye')'''
+'''import random as random_number
+print(random_number.randint(1, 5))'''
+
+'''import numpy as np
+arr = np.array([1, 2, 3, 4, 5])
+print(np.mean(arr))
+            
+l = [1, 2, 3, 4, 5]
+print(sum(l)/len(l))'''
+
+'''
+### Magic 8 Ball Exercise
+
+**Objective:** Create a "Magic 8 Ball" program using the `random` library to select an answer and the `numpy` library to store possible answers.
+
+**Tools:** `numpy` for storing answers and `random` for selecting an answer.
+
+**The Task:**
+1. Use `numpy` to create an array that holds various answers that a Magic 8 Ball could give.
+2. Use the `random` library to randomly select one of these answers when the user asks a question.
+3. The program should display the selected answer.'''
+
+'''import numpy as np
+import random
+answers = np.array([
+    "Yes, definitely.",
+    "As I see it, yes.",
+    "Reply hazy, try again.",
+    "Cannot predict now.",
+    "Don't count on it.",
+    "My sources say no.",
+    "Outlook not so good.",
+    "Signs point to yes."
+])
+
+Q=input("what is your question? ")
+print("your question is "+Q)
+
+ans=random.choice(answers)
+print("The Magic 8 Ball says: "+ans)'''
+
+'''
+### Rock, Paper, Scissors Game
+
+**Objective:** Develop a Rock, Paper, Scissors game where the player competes against the computer.
+
+**Tools:** `random` library
+
+**The Task:**
+- Make a game allowing the player to choose 'rock', 'paper', or 'scissors', while the computer makes a random choice among the same options.
+- Determine the game's outcome (win, lose, tie) based on the rules of Rock, Paper, Scissors.
+- Display the result to the player.
+
+**Instructions:**
+1. Import the `random` library at the beginning of your script.
+2. Define a function named `rock_paper_scissors()` to contain the game logic.
+3. Inside the function, prompt the player to enter their choice ('rock', 'paper', or 'scissors'). Use `input()` for this and display the choice.
+4. Utilize `random.choice()` to select the computer's move from the options: `['rock', 'paper', 'scissors']`, and print the computer's choice.
+5. Create a dictionary named `win_map` with keys as the player's choices ('rock', 'paper', 'scissors') and values as the choice each key can defeat (e.g., `{'rock': 'scissors', 'paper': 'rock', 'scissors': 'paper'}`).
+6. Determine the winner by comparing the player's choice and the computer's choice using `win_map`. If the player's choice defeats the computer's choice (according to `win_map`), the player wins; if it's the same choice, it's a tie; otherwise, the computer wins.
+7. Print the outcome of the game: either "You win!", "Computer wins!", or "It's a tie!" based on the comparison.
+8. Execute the `rock_paper_scissors()` function to start the game.
+'''
+#If winner is 'computer', then computer will always win. if it is 'player', then you always win!
+import random as ran
+
+winner = 'computer'
+choices=("rock",'paper','scissors')
+winmap={'rock': 'scissors', 'paper': 'rock', 'scissors': 'paper'}
+
+def rock_paper_scissors():
+  choice=input('rock , paper, or scissors? ')
+  print("You choose: "+choice)
+  comp_choice=ran.choice(choices) 
+  print("Computer chooses:", comp_choice)
+  
+  if comp_choice==choice:
+    return "It's a tie!"
+  elif comp_choice==winmap[choice]:
+    return "You win!"
+  else:
+    return "Computer wins!"
+    
+result= rock_paper_scissors()
+print(result)
